@@ -1,15 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+
+import Home from './pages/Home';
+import About from './pages/About';
+import Product from './pages/Products';
+import Events from './pages/Events';
+import Contents from './pages/Contents';
 
 function App() {
   return (
-    <div className="h-screen flex items-center justify-center bg-slate-100">
-      <h1 className="text-5xl font-bold text-blue-600">
-        Tailwind Working 🚀
-      </h1>
+    <div className="min-h-screen w-full">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/goals" element={<Product />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/contents" element={<Contents />} />
+      </Routes>
     </div>
   );
 }
