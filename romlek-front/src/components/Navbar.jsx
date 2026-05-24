@@ -11,11 +11,11 @@ function Navbar() {
     const closeMenu = () => setIsOpen(false);
 
     return (
-        <nav className="w-full sticky top-0 z-50 border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-xl">
+        <nav className="w-full sticky top-0 z-50 border-b border-slate-200 bg-slate-50 shadow-sm backdrop-blur-xl">
             <div className="mx-auto flex flex-col gap-4 px-4 py-4 sm:px-6 md:flex-row md:items-center md:justify-between">
                 <div className="flex items-center justify-between gap-4">
                     <Link to="/" onClick={closeMenu} className="flex items-center gap-3">
-                        <img src={Romlek} alt="Romlek" className="h-16 w-16" />
+                        <img src={Romlek} alt="Romlek" className="h-20 w-20" />
                     </Link>
 
                     <button
@@ -27,32 +27,38 @@ function Navbar() {
                     </button>
                 </div>
 
-                <div className="hidden md:flex md:items-center md:gap-4">
-                    <ul className="flex flex-wrap items-center gap-3 rounded-full bg-slate-50 px-3 py-2 shadow-sm ring-1 ring-slate-200">
-                        <li>
-                            <Link to="/about" className="rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-white hover:text-slate-900">
+                <div className="hidden md:flex md:items-center md:gap-6">
+                    <ul className="flex flex-wrap items-center gap-3 rounded-full px-3 py-3">
+                        <li className="rounded-full border border-transparent transition-all duration-300 hover:border-white/30 hover:bg-[#]/10 hover:backdrop-blur-md ">
+                            <Link to="/about" className="block px-4 py-2 text-sm font-semibold text-slate-700">
                                 ទំព័រដើម
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/goals" className="rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-white hover:text-slate-900">
+
+                        <li className="rounded-full border border-transparent transition-all duration-300 hover:border-white/30 hover:bg-white/10 hover:backdrop-blur-md ">
+                            <Link to="/goals" className="block px-4 py-2 text-sm font-semibold text-slate-700">
                                 សម្ភារៈ
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/events" className="rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-white hover:text-slate-900">
+
+                        <li className="rounded-full border border-transparent transition-all duration-300 hover:border-white/30 hover:bg-white/10 hover:backdrop-blur-md ">
+                            <Link to="/events" className="block px-4 py-2 text-sm font-semibold text-slate-700">
                                 ទំនាក់ទំនង
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/contents" className="rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-white hover:text-slate-900">
+
+                        <li className="rounded-full border border-transparent transition-all duration-300 hover:border-white/30 hover:bg-white/10 hover:backdrop-blur-md ">
+                            <Link to="/contents" className="block px-4 py-2 text-sm font-semibold text-slate-700">
                                 អំពី រំលែក
                             </Link>
                         </li>
                     </ul>
+                </div>
+
+                <div className="hidden md:flex md:items-center md:gap-4">
 
                     <div className="flex items-center gap-3">
-                        <button className="grid h-10 w-10 place-items-center rounded-full bg-slate-100 text-slate-700 shadow-sm transition hover:bg-slate-200">
+                        <button className="grid h-10 w-10 place-items-center rounded-full bg-slate-700 text-slate-200 shadow-sm transition hover:bg-slate-800">
                             <CircleUser className="h-4 w-4" />
                         </button>
                         <DarkMode />

@@ -10,7 +10,7 @@ import Contents from './pages/Contents';
 
 function App() {
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
