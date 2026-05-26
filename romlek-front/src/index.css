@@ -5,23 +5,31 @@
 @tailwind utilities;
 
 :root {
-  --text: #192048;
-  --text-h: #192048;
-  --bg: #EBEDEE;
-  --border: #d4d6db;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* --- LIGHT MODE (White & Blue Concept) --- */
+  --bg: #F4F6F9;             /* Fresh, modern light blue-gray page background */
+  --border: #E2E8F0;         /* Clean slate border */
+  
+  /* Text System */
+  --text: #334155;           /* Slate-700: Gentle, highly readable charcoal for body paragraphs */
+  --text-h: #1E3A8A;         /* Blue-900: Rich, professional dark blue for strong headings */
+  --text-muted: #64748B;     /* Slate-500: Perfect for subtitles, dates, and lesser information */
+  
+  /* Brand Accents */
+  --accent: #2563EB;         /* Blue-600: Vibrant Royal Blue for links, buttons, and brand indicators */
+  --accent-bg: rgba(37, 99, 235, 0.08);     /* Soft translucent blue backdrop */
+  --accent-border: rgba(37, 99, 235, 0.3); /* Premium soft blue outline border */
+  
+  /* System Components */
+  --code-bg: #E0E7FF;        /* Indigo-100: Soft blue-tinted codeblocks */
+  --social-bg: rgba(255, 255, 255, 0.8);
+  --shadow: rgba(37, 99, 235, 0.04) 0px 8px 24px, rgba(0, 0, 0, 0.02) 0px 2px 8px;
 
+  /* Typography Defaults */
   --sans: 'Kuntumruy Pro', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Kuntumruy Pro', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
+  font: 18px/150% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
@@ -39,17 +47,24 @@
 html.dark,
 html.dark body,
 html.dark #root {
-  --text: #ffffff;
-  --text-h: #ffffff;
-  --bg: #192048;
-  --border: #1f2844;
-  --code-bg: #1b2745;
-  --accent: #8f94ff;
-  --accent-bg: rgba(143, 148, 255, 0.18);
-  --accent-border: rgba(143, 148, 255, 0.5);
-  --social-bg: rgba(24, 33, 68, 0.45);
-  --shadow:
-    rgba(0, 0, 0, 0.35) 0 10px 15px -3px, rgba(0, 0, 0, 0.2) 0 4px 6px -2px;
+  /* --- DARK MODE (Deep Navy Concept) --- */
+  --bg: #0F172A;             /* Slate-900: Sleek, high-end deep navy canvas */
+  --border: #1E293B;         /* Slate-800: Crisp dark borders */
+  
+  /* Text System */
+  --text: #CBD5E1;           /* Slate-300: Soft off-white for comfortable reading at night */
+  --text-h: #F8FAFC;         /* Slate-50: Pure polished white for headings to instantly pop */
+  --text-muted: #94A3B8;     /* Slate-400: Muted silver-blue for secondary text info */
+  
+  /* Brand Accents */
+  --accent: #3B82F6;         /* Blue-500: Lighter, vivid electric blue designed for dark screens */
+  --accent-bg: rgba(59, 130, 246, 0.15);
+  --accent-border: rgba(59, 130, 246, 0.4);
+  
+  /* System Components */
+  --code-bg: #1E293B;        /* Slate-800: Clean code container */
+  --social-bg: rgba(30, 41, 59, 0.5);
+  --shadow: rgba(0, 0, 0, 0.4) 0px 10px 25px -5px, rgba(0, 0, 0, 0.2) 0px 4px 12px;
 }
 
 body {
@@ -71,58 +86,55 @@ body {
   background: var(--bg);
 }
 
-/* #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-} */
-
-h1,
-h2 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading);
-  font-weight: 500;
+  font-weight: 700; /* Increased to 700 for beautiful bold Khmer script presence */
   color: var(--text-h);
+  margin: 0;
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
+  font-size: 48px; /* Slightly scaled down from 56px to feel more balanced on laptops */
+  line-height: 130%;
+  letter-spacing: -1.2px;
+  margin-bottom: 24px;
   @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+    font-size: 32px;
   }
 }
+
 h2 {
   font-size: 24px;
-  line-height: 118%;
+  line-height: 135%;
   letter-spacing: -0.24px;
-  margin: 0 0 8px;
+  margin-bottom: 12px;
   @media (max-width: 1024px) {
     font-size: 20px;
   }
 }
+
 p {
   margin: 0;
+  line-height: 160%; /* Added cleaner tracking space for Khmer text characters */
+}
+
+/* New custom class utility for subtitles, captions, or descriptions */
+.text-muted {
+  color: var(--text-muted);
 }
 
 code,
 .counter {
   font-family: var(--mono);
   display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+  border-radius: 6px;
+  color: var(--accent); /* Uses your brand blue instead of harsh heading color */
+  font-weight: 500;
 }
 
 code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
+  font-size: 14px;
+  padding: 3px 8px;
   background: var(--code-bg);
+  border: 1px solid var(--border);
 }
