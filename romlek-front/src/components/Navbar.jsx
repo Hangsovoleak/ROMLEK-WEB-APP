@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Romlek from '../assets/RomlekSticker.png';
-import { CircleUser, Menu, X } from 'lucide-react';
+import { CircleUser, Menu } from 'lucide-react';
 import DarkMode from './DarkMode';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ function Navbar() {
 
     const navItems = [
         { to: "/about", label: "ទំព័រដើម" },
-        { to: "/goals", label: "សម្ភារៈ" },
+        { to: "/products", label: "សម្ភារៈ" },
         { to: "/events", label: "ទំនាក់ទំនង" },
         { to: "/contents", label: "អំពី រំលែក" }
     ];
@@ -43,21 +43,21 @@ function Navbar() {
 
     // --- Concept Theme Colors (White & Blue) ---
     const navContainerStyle = `
-        w-full border-b backdrop-blur-xl transition-all duration-300
-        bg-white/70 border-blue-100/80 shadow-[0_4px_20px_rgba(37,99,235,0.03)]
+        w-full backdrop-blur-xl transition-all duration-300
+        bg-white/70 shadow-[0_4px_20px_rgba(37,99,235,0.03)]
         dark:bg-slate-950/75 dark:border-blue-950/40 dark:shadow-[0_4px_30px_rgba(0,0,0,0.2)]
     `;
 
     const menuPillStyle = `
         relative flex items-center gap-1 p-1.5 rounded-full border
-        bg-blue-50/50 border-blue-100/50
+        bg-blue-50/50 
         dark:bg-blue-950/20 dark:border-blue-900/30
     `;
 
     return (
         <div className="w-full sticky top-0 z-50">
             <nav className={navContainerStyle}>
-                <div className="w-full flex h-16 items-center justify-between px-6 lg:px-12">
+                <div className="w-full flex h-20 items-center justify-between px-6 lg:px-12">
                     
                     {/* Logo Section */}
                     <div className="flex items-center min-w-[60px]">
@@ -118,7 +118,7 @@ function Navbar() {
                             onClick={toggleMenu}
                             className="inline-flex h-10 w-10 items-center justify-center rounded-full border bg-white/50 dark:bg-slate-900/50 border-blue-100 dark:border-blue-950 text-slate-700 dark:text-slate-200 shadow-sm backdrop-blur-md transition-all duration-300"
                         >
-                            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                            {isOpen ? <Menu className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                         </button>
                     </div>
                 </div>

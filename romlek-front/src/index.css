@@ -6,28 +6,42 @@
 
 :root {
   /* --- LIGHT MODE (White & Blue Concept) --- */
-  --bg: #F4F6F9;             /* Fresh, modern light blue-gray page background */
-  --border: #E2E8F0;         /* Clean slate border */
+  --bg: #f3f4f6;             /* Exact gray backdrop */
+  --border: #e2e8f0;         /* Clean slate border */
   
   /* Text System */
-  --text: #334155;           /* Slate-700: Gentle, highly readable charcoal for body paragraphs */
-  --text-h: #1E3A8A;         /* Blue-900: Rich, professional dark blue for strong headings */
-  --text-muted: #64748B;     /* Slate-500: Perfect for subtitles, dates, and lesser information */
+  --text: #334155;           /* Slate-700: Gentle charcoal for body */
+  --text-h: #1e293b;         /* Slate-800: Deep slate for titles */
+  --text-muted: #64748b;     /* Slate-500: Subtitles */
   
   /* Brand Accents */
-  --accent: #2563EB;         /* Blue-600: Vibrant Royal Blue for links, buttons, and brand indicators */
-  --accent-bg: rgba(37, 99, 235, 0.08);     /* Soft translucent blue backdrop */
-  --accent-border: rgba(37, 99, 235, 0.3); /* Premium soft blue outline border */
+  --accent: #1b233d;         /* Premium Romlek brand dark navy */
+  --accent-bg: rgba(27, 35, 61, 0.08);     
+  --accent-border: rgba(27, 35, 61, 0.3); 
   
   /* System Components */
-  --code-bg: #E0E7FF;        /* Indigo-100: Soft blue-tinted codeblocks */
+  --code-bg: #e2e8f0;        
   --social-bg: rgba(255, 255, 255, 0.8);
-  --shadow: rgba(37, 99, 235, 0.04) 0px 8px 24px, rgba(0, 0, 0, 0.02) 0px 2px 8px;
+  --shadow: rgba(0, 0, 0, 0.02) 0px 8px 24px, rgba(0, 0, 0, 0.02) 0px 2px 8px;
+
+  /* --- REVERSED CARD VARIABLES (Dark Navy in Light Mode) --- */
+  --card-bg: #192048;        
+  --card-text: #cbd5e1;      
+  --card-text-h: #f8fafc;    
+  --card-border: #1e293b;
 
   /* Typography Defaults */
   --sans: 'Kuntumruy Pro', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Kuntumruy Pro', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+
+  /* ... your existing light variables ... */
+  --card-bg: #192048;        
+  --card-text: #cbd5e1;      
+  --card-text-h: #f8fafc;    
+  --card-border: #1e293b;
+  /* ADD THIS: Medium silver/gray for labels inside the dark card */
+  --card-text-muted: #94a3b8;
 
   font: 18px/150% var(--sans);
   letter-spacing: 0.18px;
@@ -48,29 +62,44 @@ html.dark,
 html.dark body,
 html.dark #root {
   /* --- DARK MODE (Deep Navy Concept) --- */
-  --bg: #0F172A;             /* Slate-900: Sleek, high-end deep navy canvas */
-  --border: #1E293B;         /* Slate-800: Crisp dark borders */
+  --bg: #192048;             
+  --border: #1e293b;         
   
   /* Text System */
-  --text: #CBD5E1;           /* Slate-300: Soft off-white for comfortable reading at night */
-  --text-h: #F8FAFC;         /* Slate-50: Pure polished white for headings to instantly pop */
-  --text-muted: #94A3B8;     /* Slate-400: Muted silver-blue for secondary text info */
+  --text: #cbd5e1;           
+  --text-h: #f8fafc;         
+  --text-muted: #94a3b8;     
   
   /* Brand Accents */
-  --accent: #3B82F6;         /* Blue-500: Lighter, vivid electric blue designed for dark screens */
+  --accent: #3b82f6;         
   --accent-bg: rgba(59, 130, 246, 0.15);
   --accent-border: rgba(59, 130, 246, 0.4);
   
   /* System Components */
-  --code-bg: #1E293B;        /* Slate-800: Clean code container */
-  --social-bg: rgba(30, 41, 59, 0.5);
+  --code-bg: #161d33;        
+  --social-bg: rgba(22, 29, 51, 0.5);
   --shadow: rgba(0, 0, 0, 0.4) 0px 10px 25px -5px, rgba(0, 0, 0, 0.2) 0px 4px 12px;
+
+  /* --- REVERSED CARD VARIABLES (Crisp White in Dark Mode) --- */
+  --card-bg: #ffffff;        
+  --card-text: #334155;      
+  --card-text-h: #1e293b;    
+  --card-border: #e2e8f0;
+
+  /* ... your existing dark variables ... */
+  --card-bg: #ffffff;        
+  --card-text: #334155;      
+  --card-text-h: #1e293b;    
+  --card-border: #e2e8f0;
+  /* ADD THIS: Slate gray for labels inside the light card */
+  --card-text-muted: #64748b;
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  min-height: 100vh;
 }
 
 #root {
@@ -78,23 +107,32 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   background: var(--bg);
 }
 
+/* --- Typography System Rules --- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading);
-  font-weight: 700; /* Increased to 700 for beautiful bold Khmer script presence */
-  color: var(--text-h);
+  font-weight: 700; 
+  /* FIXED: Uses currentColor if inherited, otherwise defaults to the header theme variable */
+  color: inherit;
+  --text-heading-color: var(--text-h);
+  color: var(--text-heading-color);
   margin: 0;
 }
 
+/* Treat headings nested inside anything reading var(--card-text-h) properly */
+.card-reversed h1, .card-reversed h2, .card-reversed h3,
+[style*="--card-bg"] h1, [style*="--card-bg"] h2, [style*="--card-bg"] h3 {
+  color: var(--card-text-h) !important;
+}
+
 h1 {
-  font-size: 48px; /* Slightly scaled down from 56px to feel more balanced on laptops */
+  font-size: 48px; 
   line-height: 130%;
   letter-spacing: -1.2px;
   margin-bottom: 24px;
@@ -115,10 +153,9 @@ h2 {
 
 p {
   margin: 0;
-  line-height: 160%; /* Added cleaner tracking space for Khmer text characters */
+  line-height: 160%; 
 }
 
-/* New custom class utility for subtitles, captions, or descriptions */
 .text-muted {
   color: var(--text-muted);
 }
@@ -128,7 +165,7 @@ code,
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 6px;
-  color: var(--accent); /* Uses your brand blue instead of harsh heading color */
+  color: var(--accent); 
   font-weight: 500;
 }
 
