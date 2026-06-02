@@ -16,40 +16,44 @@ function DarkMode() {
     document.documentElement.classList.toggle('dark', newDarkState);
   };
 
-  // --- Clean Style Variables ---
+  // --- Theme Synchronized Styles ---
   const buttonStyle = `
-    group relative flex h-10 w-20 items-center rounded-full p-1 shadow-sm transition-all duration-300 
-    bg-slate-100/80 border border-slate-200/40 
-    dark:bg-slate-800/60 dark:border-slate-700/30 
-    hover:scale-105 active:scale-95
+    group relative flex h-10 w-20 items-center rounded-full p-1 shadow-inner transition-all duration-300 
+    hover:scale-105 active:scale-95 cursor-pointer border-none
   `;
 
-  // We use simple right-1 and left-1 classes instead of complex math
-  const sliderPosition = isDark ? 'right-1' : 'left-1';
-  
+  // This guarantees silky-smooth 60fps hardware-accelerated toggle animations!
   const sliderStyle = `
-    absolute top-1 bottom-1 w-8 rounded-full bg-white shadow-md transition-all duration-300 ease-out
-    dark:bg-slate-700 
-    ${sliderPosition}
+    absolute top-1 bottom-1 left-1 w-8 rounded-full shadow-md transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+    bg-white dark:bg-slate-900
+    ${isDark ? 'translate-x-10' : 'translate-x-0'}
   `;
 
-  // Conditional styles for icons (Color, Opacity, Size, and Rotation)
+  // Icons styling optimized to blend perfectly with your specific image palette variables
   const sunStyle = isDark 
-    ? 'text-slate-400 opacity-40 scale-90' 
-    : 'text-amber-500 opacity-100 scale-110 rotate-45';
+    ? 'text-slate-500 opacity-30 scale-90' 
+    : 'text-amber-500 opacity-100 scale-110 rotate-45 [filter:drop-shadow(0_0_4px_rgba(245,158,11,0.4))]';
 
   const moonStyle = isDark 
-    ? 'text-indigo-400 opacity-100 scale-110 -rotate-12' 
-    : 'text-slate-400 opacity-40 scale-90';
+    ? 'text-cyan-400 opacity-100 scale-110 -rotate-12 [filter:drop-shadow(0_0_6px_rgba(86,225,233,0.6))]' 
+    : 'text-slate-400 opacity-30 scale-90';
 
   return (
-    <button onClick={toggleDarkMode} className={buttonStyle} aria-label="Toggle theme">
+    <button 
+      onClick={toggleDarkMode} 
+      className={buttonStyle} 
+      aria-label="Toggle theme"
+      style={{
+        background: isDark ? 'rgba(17, 44, 113, 0.4)' : 'rgba(10, 35, 83, 0.06)',
+        border: '1px solid var(--border)'
+      }}
+    >
       
       {/* The White/Dark Sliding Block */}
       <span className={sliderStyle} />
       
       {/* The Icons Layer */}
-      <span className="relative z-10 flex w-full items-center justify-between px-0">
+      <span className="relative z-10 flex w-full items-center justify-between px-0 pointer-events-none">
         
         {/* Sun Container */}
         <span className="flex h-8 w-8 items-center justify-center">

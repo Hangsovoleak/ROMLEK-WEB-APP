@@ -20,10 +20,8 @@ function Navbar() {
         { to: "/contents", label: "អំពី រំលែក" }
     ];
 
-    // Create an array of references to measure each link element's real size
     const itemRefs = useRef([]);
 
-    // This handles the smooth mouse entry calculation
     const handleMouseEnter = (index) => {
         const currentItem = itemRefs.current[index];
         if (currentItem) {
@@ -36,27 +34,27 @@ function Navbar() {
         }
     };
 
-    // Hide the slider when the mouse completely leaves the navigation list
     const handleMouseLeave = () => {
         setSliderStyle((prev) => ({ ...prev, opacity: 0 }));
     };
 
-    // --- Concept Theme Colors (White & Blue) ---
+    // --- Dynamic Navigation Design Classes Matched to Your Specific Matrix ---
     const navContainerStyle = `
-        w-full backdrop-blur-xl transition-all duration-300
-        bg-white/70 shadow-[0_4px_20px_rgba(37,99,235,0.03)]
-        dark:bg-slate-950/75 dark:border-blue-950/40 dark:shadow-[0_4px_30px_rgba(0,0,0,0.2)]
+        w-full backdrop-blur-xl transition-all duration-300 border-b
+        bg-white/45 border-[var(--border)] shadow-[var(--shadow)]
+        dark:bg-[linear-gradient(135deg,rgba(86,225,233,0.04),rgba(187,99,255,0.04))]
     `;
 
     const menuPillStyle = `
         relative flex items-center gap-1 p-1.5 rounded-full border
-        bg-blue-50/50 
-        dark:bg-blue-950/20 dark:border-blue-900/30
+        bg-white/30 border-[var(--border)]
+        dark:bg-white/5 dark:border-white/10
     `;
 
     return (
-        <div className="w-full sticky top-0 z-50">
-            <nav className={navContainerStyle}>
+        <div className="w-full sticky top-0 z-50 px-0 sm:px-4 pt-0 sm:pt-2">
+            {/* Added a light wrapper constraint so the mobile menu can float as a pill */}
+            <nav className={`${navContainerStyle} sm:rounded-2xl`}>
                 <div className="w-full flex h-20 items-center justify-between px-6 lg:px-12">
                     
                     {/* Logo Section */}
@@ -66,13 +64,14 @@ function Navbar() {
                         </Link>
                     </div>
 
-                    {/* Desktop Navigation Links with Smart Auto-Sliding Hover */}
+                    {/* Desktop Navigation Links with Glowing Auto-Sliding Hover */}
                     <div className="hidden md:flex md:items-center">
                         <ul className={menuPillStyle} onMouseLeave={handleMouseLeave}>
                             
-                            {/* The Smart Sliding Glass Indicator */}
                             <div 
-                                className="absolute top-1.5 bottom-1.5 rounded-full shadow-sm pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] bg-white dark:bg-blue-600"
+                                className="absolute top-1.5 bottom-1.5 rounded-full pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] 
+                                bg-[var(--space-purple)] dark:bg-[var(--accent)] 
+                                shadow-[0_0_15px_rgba(91,88,235,0.4)] dark:shadow-[0_0_20px_rgba(0,240,255,0.6)]"
                                 style={{
                                     left: `${sliderStyle.left}px`,
                                     width: `${sliderStyle.width}px`,
@@ -90,7 +89,9 @@ function Navbar() {
                                 >
                                     <Link 
                                         to={item.to} 
-                                        className="block px-5 py-2 text-sm font-medium rounded-full text-center whitespace-nowrap transition-colors duration-300 text-slate-600 dark:text-slate-300 hover:text-blue-800 dark:hover:text-white"
+                                        className="block px-6 py-2 text-sm font-medium rounded-full text-center whitespace-nowrap transition-colors duration-200 
+                                        text-[var(--text)] dark:text-slate-200 
+                                        hover:text-white dark:hover:text-[#051330]"
                                     >
                                         {item.label}
                                     </Link>
@@ -102,10 +103,10 @@ function Navbar() {
                     {/* Right Action Items */}
                     <div className="hidden md:flex md:items-center md:gap-4 min-w-[140px] justify-end">
                         <div className="flex items-center gap-3">
-                            <button className="group flex h-10 w-10 items-center justify-center rounded-full text-white bg-blue-800 dark:bg-blue-900/30 shadow-sm transition-all duration-300 hover:bg-blue-800 dark:hover:bg-blue-900/15 hover:scale-105">
+                            <button className="group flex h-10 w-10 items-center justify-center rounded-full text-white bg-[var(--space-dark)] dark:bg-[var(--accent)] dark:text-[#051330] shadow-[var(--shadow)] transition-all duration-300 hover:scale-105 active:scale-95">
                                 <CircleUser className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
                             </button>
-                            <div className="p-1 rounded-full bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100/50 dark:border-blue-900/30">
+                            <div className="p-1 rounded-full bg-white/30 dark:bg-white/5 border border-[var(--border)]">
                                 <DarkMode />
                             </div>
                         </div>
@@ -116,32 +117,41 @@ function Navbar() {
                         <DarkMode />
                         <button
                             onClick={toggleMenu}
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border bg-white/50 dark:bg-slate-900/50 border-blue-100 dark:border-blue-950 text-slate-700 dark:text-slate-200 shadow-sm backdrop-blur-md transition-all duration-300"
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border bg-white/40 dark:bg-white/5 border-[var(--border)] text-[var(--text)] dark:text-slate-200 shadow-sm backdrop-blur-md transition-all duration-300 active:scale-95"
                         >
-                            {isOpen ? <Menu className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                            {isOpen ? <Menu className="h-5 w-5 animate-in fade-in zoom-in duration-200" /> : <Menu className="h-5 w-5 animate-in fade-in zoom-in duration-200" />}
                         </button>
                     </div>
                 </div>
 
-                {/* Mobile Dropdown Menu */}
+                {/* --- TRANSFORMed MOBILE DROPDOWN CAPSULE --- */}
                 {isOpen && (
-                    <div className="md:hidden border-t bg-white/95 dark:bg-slate-950/95 border-blue-100 dark:border-blue-950 px-6 py-4 backdrop-blur-xl">
-                        <div className="space-y-2">
+                    <div className="absolute top-[88px] left-4 right-4 md:hidden overflow-hidden rounded-2xl border backdrop-blur-2xl transition-all duration-300 shadow-[var(--shadow)] animate-in slide-in-from-top-4 duration-300 ease-out
+                        bg-[#5a58eba9] border-[var(--border)]
+                        dark:bg-[#5a58eba9] dark:border-white/10"
+                    >
+                        {/* Interactive Item Container */}
+                        <div className="p-4 space-y-1">
                             {navItems.map((item) => (
                                 <Link 
                                     key={item.to}
                                     to={item.to} 
                                     onClick={closeMenu} 
-                                    className="block rounded-full px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-200 transition-all duration-200 hover:bg-blue-50 dark:hover:bg-blue-950/50 hover:text-blue-600"
+                                    className="block rounded-xl px-4 py-3.5 text-base font-medium transition-all duration-200 
+                                        text-[var(--text)] dark:text-slate-200 
+                                        hover:bg-[var(--space-purple)]/15 dark:hover:bg-[var(--accent)]/10 
+                                        hover:text-[var(--space-purple)] dark:hover:text-[var(--accent)]
+                                        active:scale-[0.99]"
                                 >
                                     {item.label}
                                 </Link>
                             ))}
                         </div>
 
-                        <div className="mt-4 pt-4 border-t border-blue-100 dark:border-blue-950">
-                            <button className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-900 text-white px-4 py-3 text-sm font-medium shadow-sm">
-                                <CircleUser className="h-4 w-4" />
+                        {/* Action Drawer Area */}
+                        <div className="px-4 pb-4 pt-2 border-t border-[var(--border)] dark:border-white/5 bg-black/5 dark:bg-white/5">
+                            <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--space-dark)] text-white dark:bg-[var(--accent)] dark:text-[#051330] px-4 py-3.5 text-sm font-semibold shadow-md active:scale-[0.98] transition-all duration-150">
+                                <CircleUser className="h-5 w-5" />
                                 Profile
                             </button>
                         </div>
