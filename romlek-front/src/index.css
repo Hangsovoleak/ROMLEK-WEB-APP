@@ -5,41 +5,32 @@
 @tailwind utilities;
 
 :root {
-  /* --- IMAGE PALETTE MATRIX --- */
-  --space-dark: #0A2353;      /* Deep navy space base */
-  --space-midnight: #112C71;  /* Rich royal accent */
-  --space-cyan: #56E1E9;      /* High-energy electric cyan */
-  --space-purple: #5B58EB;    /* Strong professional purple */
-  --space-violet: #BB63FF;    /* Intense modern neon violet */
+  --space-dark: #001F3F;      
+  --space-midnight: #008C8C;  
+  --space-cyan: #00BFFF;      
+  --space-purple: #5B58EB;    
+  --space-violet: #BB63FF;   
 
-  /* ========================================================================
-     --- VIBRANT LIGHT MODE (Infused with Image Gradient & Rich Contrast) ---
-     ======================================================================== */
-  /* The exact background gradient from the image, but balanced for light mode readability */
-  --bg: radial-gradient(circle at 10% 20%, rgba(86, 225, 233, 0.5) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(187, 99, 255, 0.4) 0%, transparent 60%),
-        radial-gradient(circle at 50% 50%, rgba(91, 88, 235, 0.3) 0%, transparent 70%),
-        linear-gradient(135deg, #e0e9f8 0%, #b4c6ef 100%); /* High-saturation light space base */
-        
+--bg: radial-gradient(circle at 15% 15%, rgba(0, 191, 255, 0.25) 0%, transparent 55%),
+        radial-gradient(circle at 85% 85%, rgba(187, 99, 255, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(0, 140, 140, 0.1) 0%, transparent 65%),
+        linear-gradient(135deg, #e6f4f8 0%, #cce7f0 100%);
+
   --border: rgba(17, 44, 113, 0.15);
   
-  /* Text System - Deep contrast against the vibrant backdrop */
-  --text: #0A2353;               /* Deep navy for ultimate legibility over the colored bg */
-  --text-h: #112C71;             /* Rich royal midnight for headings */
-  --text-muted: #475569;         /* Clean slate gray for subtitles */
+  --text: #0A2353;           
+  --text-h: #112C71;            
+  --text-muted: #475569;         
   
-  /* Accents */
-  --accent: #5B58EB;             /* Strong purple */
-  --accent-secondary: #BB63FF;   /* Neon violet */
+  --accent: #5B58EB;             
+  --accent-secondary: #BB63FF;   
   --accent-bg: rgba(91, 88, 235, 0.1);     
   --accent-border: rgba(91, 88, 235, 0.3); 
   
-  /* Components & Shadows */
   --code-bg: rgba(255, 255, 255, 0.4);        
   --social-bg: rgba(255, 255, 255, 0.6);
   --shadow: rgba(10, 35, 83, 0.1) 0px 12px 32px, rgba(91, 88, 235, 0.05) 0px 4px 12px;
 
-  /* --- REVERSED CARD VARIABLES (Deep Navy Card overlay in Light Mode) --- */
   --card-bg: #0A2353;        
   --card-text: #cbd5e1;      
   --card-text-h: #ffffff;    
@@ -47,7 +38,6 @@
   --card-text-muted: #94a3b8;
   --card-blur: none;
 
-  /* Typography Defaults */
   --sans: 'Kuntumruy Pro', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Kuntumruy Pro', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -67,9 +57,6 @@
   }
 }
 
-/* ========================================================================
-   --- INTENSE DARK MODE (Highly Saturated & Neon Cyberpunk Vibes) ---
-   ======================================================================== */
 html.dark,
 html.dark body,
 html.dark #root {
@@ -80,25 +67,21 @@ html.dark #root {
              
   --border: rgba(86, 225, 233, 0.25); 
   
-  /* Text System */
   --text: #f1f5f9;               
   --text-h: #ffffff;             
   --text-muted: #cbd5e1;         
   
-  /* STRONGER Dark-Mode Accents */
   --accent: #00F0FF;             
   --accent-secondary: #D946EF;   
   --accent-bg: rgba(0, 240, 255, 0.2);
   --accent-border: rgba(0, 240, 255, 0.5);
   
-  /* Glassmorphism System Components */
   --code-bg: rgba(17, 44, 113, 0.8);        
   --social-bg: rgba(255, 255, 255, 0.1);
   --shadow: rgba(0, 0, 0, 0.6) 0px 24px 48px -12px, 
             rgba(0, 240, 255, 0.2) 0px 4px 30px,
             rgba(217, 70, 239, 0.15) 0px -4px 30px;
 
-  /* --- REVERSED CARD VARIABLES (Pure White Card Option in Dark Mode) --- */
   --card-bg: #ffffff;        
   --card-text: #0f172a;      
   --card-text-h: #0A2353;    
@@ -127,7 +110,6 @@ body {
   background: transparent;
 }
 
-/* --- Card Styles & Interactive Hover FX --- */
 .card-reversed, 
 [style*="--card-bg"] {
   background: var(--card-bg) !important;
@@ -138,7 +120,6 @@ body {
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
 }
 
-/* Glassmorphism for Light Mode Normal Cards (Clean frosty look over gradient) */
 .card-reversed:not(html.dark .card-reversed),
 [style*="--card-bg"]:not(html.dark [style*="--card-bg"]) {
   background: rgba(255, 255, 255, 0.45) !important;
@@ -148,13 +129,11 @@ body {
   color: var(--text) !important;
 }
 
-/* Overriding the light mode .card-reversed only if you explicitly want the deep overlay */
 .card-reversed-dark-flat {
   background: var(--space-dark) !important;
   color: #ffffff !important;
 }
 
-/* Glassmorphism tweaks for Dark Mode */
 html.dark .card-reversed,
 html.dark [style*="--card-bg"] {
   background: linear-gradient(135deg, rgba(86, 225, 233, 0.08), rgba(187, 99, 255, 0.08)) !important;
@@ -164,13 +143,11 @@ html.dark [style*="--card-bg"] {
   color: #f1f5f9 !important;
 }
 
-/* Premium neon hover glow mechanics */
 .card-reversed:hover, 
 [style*="--card-bg"]:hover {
   transform: translateY(-5px);
 }
 
-/* Hover shadow response based on mode */
 html:not(.dark) .card-reversed:hover, 
 html:not(.dark) [style*="--card-bg"]:hover {
   box-shadow: rgba(10, 35, 83, 0.15) 0px 20px 35px;
@@ -182,7 +159,6 @@ html.dark [style*="--card-bg"]:hover {
               rgba(217, 70, 239, 0.25) 0px 5px 25px;
 }
 
-/* --- Typography System Rules --- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading);
   font-weight: 700; 
@@ -206,7 +182,6 @@ html.dark [style*="--card-bg"] h1, html.dark [style*="--card-bg"] h2, html.dark 
   color: var(--text-muted) !important;
 }
 
-/* Header Text Gradient Customizations */
 h1 {
   font-size: 48px; 
   line-height: 125%;

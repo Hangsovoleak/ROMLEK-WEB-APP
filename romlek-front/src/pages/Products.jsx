@@ -10,7 +10,6 @@ function Products() {
   const [isBrandOpen, setIsBrandOpen] = useState(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
-  // Updated array with circular economy details to support the card redesign
   const productList = [
     { 
       image: Watch, 
@@ -77,17 +76,14 @@ function Products() {
   return (
     <div className="min-h-screen transition-colors duration-300">
       
-      {/* Main Structural Wrapper */}
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
         
-        {/* Breadcrumbs Path Navigation */}
         <nav className="text-xs font-medium text-slate-400 dark:text-slate-500 mb-6 flex items-center gap-2">
           <span className="hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer transition-colors">ទំព័រដើម</span>
           <span>/</span>
           <span className="hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer transition-colors">សម្ភារៈ</span>
         </nav>
 
-        {/* Dynamic Marketing Showcase Banner Area using Custom Variables */}
         <div 
           className="w-full rounded-2xl p-6 md:p-8 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 transition-all duration-300"
           style={{
@@ -105,7 +101,6 @@ function Products() {
             </h1>
           </div>
           
-          {/* Dynamic Action Search Filter Container Layout */}
           <div 
             className="flex items-center rounded-xl px-3 py-2 w-full md:w-80 shadow-inner transition-colors duration-300"
             style={{
@@ -129,15 +124,12 @@ function Products() {
           </div>
         </div>
 
-        {/* Secondary Sub-Header Control Bar Layer */}
         <div 
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-4 mb-6 gap-4"
           style={{ borderBottom: '1px solid var(--border)' }}
         >
           
-          {/* Left Block: Active Filter Chip Badges Stack & Mobile Toggle Action Button */}
           <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
-            {/* MOBILE ONLY FILTER BUTTON */}
             <button 
               onClick={() => setIsMobileFilterOpen(true)}
               className="lg:hidden flex items-center gap-2 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm hover:opacity-90 active:scale-95 transition-all cursor-pointer border-none"
@@ -167,7 +159,6 @@ function Products() {
             </div>
           </div>
 
-          {/* Right Block: Sorting Selector Switch */}
           <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
             <span className="text-xs font-medium text-slate-400 dark:text-slate-500">តម្រៀបតាម:</span>
             <select 
@@ -181,12 +172,10 @@ function Products() {
           </div>
         </div>
 
-        {/* Content Division Grid Frame layout */}
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
-          {/* DESKTOP ACCORDION FILTER SIDEBAR */}
           <aside 
-            className="hidden lg:block w-full lg:w-64 rounded-2xl p-4 shadow-sm space-y-3 lg:sticky lg:top-6 transition-all duration-300 flex-shrink-0"
+            className="hidden lg:block w-full lg:w-80 rounded-2xl p-4 shadow-sm space-y-3 lg:sticky lg:top-6 transition-all duration-300 flex-shrink-0"
             style={{
               background: 'var(--social-bg)',
               border: '1px solid var(--border)',
@@ -197,7 +186,6 @@ function Products() {
             {renderSidebarContent()}
           </aside>
 
-          {/* MOBILE SLIDE-OVER DRAWER */}
           {isMobileFilterOpen && (
             <div className="fixed inset-0 z-50 lg:hidden flex justify-end">
               <div 
@@ -226,19 +214,16 @@ function Products() {
             </div>
           )}
 
-          {/* MAIN PRODUCT GRID VIEW AND CONTROLS CONTAINER */}
           <main className="flex-1 w-full">
             
-            {/* Grid display using stretch behavior to keep heights uniform */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center w-full px-4 sm:px-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-12 justify-items-center w-full max-w-5xl mx-auto px-2">
               {productList.map((product, index) => (
-                <div key={index} className="flex h-full w-full">
+                <div key={index} className="flex h-full w-full justify-center">
                   <StatCard data={product} />
                 </div>
               ))}
             </div>
 
-            {/* Pagination Controls Section Footer Layout */}
             <div 
               className="flex items-center justify-center gap-1.5 sm:gap-2 mt-12 pt-6 text-xs font-bold flex-wrap"
               style={{ borderTop: '1px solid var(--border)', color: 'var(--text-muted)' }}
@@ -328,8 +313,7 @@ function Products() {
   function renderSidebarContent() {
     return (
       <>
-        {/* Accordion Group 1: Categories */}
-        <div className="pb-2" style={{ borderBottom: '1px solid var(--border)' }}>
+        <div className="pb-2 " style={{ borderBottom: '1px solid var(--border)' }}>
           <button 
             onClick={() => setIsCategoryOpen(!isCategoryOpen)}
             className="w-full flex items-center justify-between text-xs font-bold uppercase tracking-widest py-2 transition-colors bg-transparent border-none cursor-pointer"
@@ -366,7 +350,6 @@ function Products() {
           )}
         </div>
 
-        {/* Accordion Group 2: Status / Labels Filter */}
         <div>
           <button 
             onClick={() => setIsBrandOpen(!isBrandOpen)}
