@@ -5,38 +5,43 @@
 @tailwind utilities;
 
 :root {
-  --space-dark: #001F3F;      
-  --space-midnight: #008C8C;  
-  --space-cyan: #00BFFF;      
-  --space-purple: #5B58EB;    
-  --space-violet: #BB63FF;   
+  /* Constant palette variables from image_115d01.jpg */
+  --space-dark: #141E30;      
+  --space-midnight: #203030;  
+  --space-cyan: #35577D;      
+  --space-purple: #4a73a3;    
+  --space-violet: #5c84b4;   
 
---bg: radial-gradient(circle at 15% 15%, rgba(0, 191, 255, 0.25) 0%, transparent 55%),
-        radial-gradient(circle at 85% 85%, rgba(187, 99, 255, 0.2) 0%, transparent 60%),
-        radial-gradient(circle at 50% 50%, rgba(0, 140, 140, 0.1) 0%, transparent 65%),
-        linear-gradient(135deg, #e6f4f8 0%, #cce7f0 100%);
+  /* Light Mode */
+  --bg: radial-gradient(circle at 15% 15%, rgba(53, 87, 125, 0.12) 0%, transparent 55%),
+        radial-gradient(circle at 85% 85%, rgba(20, 30, 48, 0.05) 0%, transparent 60%),
+        linear-gradient(135deg, #f4f7fa 0%, #e2eaf0 100%);
 
-  --border: rgba(17, 44, 113, 0.15);
+  --border: rgba(20, 30, 48, 0.1);
   
-  --text: #0A2353;           
-  --text-h: #112C71;            
-  --text-muted: #475569;         
+  --text: #1c2a3e;           
+  --text-h: #141E30;            
+  --text-muted: #5a6e85;         
   
-  --accent: #5B58EB;             
-  --accent-secondary: #BB63FF;   
-  --accent-bg: rgba(91, 88, 235, 0.1);     
-  --accent-border: rgba(91, 88, 235, 0.3); 
+  --accent: #35577D;             
+  --accent-secondary: #4a73a3;   
+  --accent-bg: rgba(53, 87, 125, 0.08);     
+  --accent-border: rgba(53, 87, 125, 0.2); 
   
-  --code-bg: rgba(255, 255, 255, 0.4);        
-  --social-bg: rgba(255, 255, 255, 0.6);
-  --shadow: rgba(10, 35, 83, 0.1) 0px 12px 32px, rgba(91, 88, 235, 0.05) 0px 4px 12px;
+  --code-bg: rgba(255, 255, 255, 0.6);        
+  --social-bg: rgba(255, 255, 255, 0.7);
+  --shadow: rgba(20, 30, 48, 0.06) 0px 12px 32px, rgba(53, 87, 125, 0.04) 0px 4px 12px;
 
-  --card-bg: #0A2353;        
+  --card-bg: #141E30;        
   --card-text: #cbd5e1;      
   --card-text-h: #ffffff;    
-  --card-border: #112C71;
+  --card-border: #1c2a3e;
   --card-text-muted: #94a3b8;
   --card-blur: none;
+
+  /* Mobile Nav Background - Light Mode */
+  --nav-bg-mobile: rgba(244, 247, 250, 0.92); 
+  --nav-border-mobile: rgba(20, 30, 48, 0.08);
 
   --sans: 'Kuntumruy Pro', system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: 'Kuntumruy Pro', system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -60,34 +65,37 @@
 html.dark,
 html.dark body,
 html.dark #root {
-  --bg: radial-gradient(circle at 15% 15%, rgba(86, 225, 233, 0.45) 0%, transparent 55%),
-        radial-gradient(circle at 85% 85%, rgba(187, 99, 255, 0.5) 0%, transparent 60%),
-        radial-gradient(circle at 50% 50%, #5b58eb59 0%, transparent 65%),
-        #051330; 
+  /* Dark Mode setup from Navy Mirage palette */
+  --bg: radial-gradient(circle at 15% 15%, rgba(53, 87, 125, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 85% 85%, rgba(20, 30, 48, 0.8) 0%, transparent 70%),
+        linear-gradient(135deg, #141E30 0%, #0d1420 100%); 
              
-  --border: rgba(86, 225, 233, 0.25); 
+  --border: rgba(53, 87, 125, 0.3); 
   
   --text: #f1f5f9;               
   --text-h: #ffffff;             
-  --text-muted: #cbd5e1;         
+  --text-muted: #94a3b8;         
   
-  --accent: #00F0FF;             
-  --accent-secondary: #D946EF;   
-  --accent-bg: rgba(0, 240, 255, 0.2);
-  --accent-border: rgba(0, 240, 255, 0.5);
+  --accent: #35577D;             
+  --accent-secondary: #4a73a3;   
+  --accent-bg: rgba(53, 87, 125, 0.2);
+  --accent-border: rgba(53, 87, 125, 0.4);
   
-  --code-bg: rgba(17, 44, 113, 0.8);        
-  --social-bg: rgba(255, 255, 255, 0.1);
-  --shadow: rgba(0, 0, 0, 0.6) 0px 24px 48px -12px, 
-            rgba(0, 240, 255, 0.2) 0px 4px 30px,
-            rgba(217, 70, 239, 0.15) 0px -4px 30px;
+  --code-bg: rgba(20, 30, 48, 0.7);        
+  --social-bg: rgba(255, 255, 255, 0.05);
+  --shadow: rgba(0, 0, 0, 0.5) 0px 24px 48px -12px, 
+            rgba(53, 87, 125, 0.15) 0px 4px 30px;
 
   --card-bg: #ffffff;        
   --card-text: #0f172a;      
-  --card-text-h: #0A2353;    
+  --card-text-h: #141E30;    
   --card-border: #ffffff;
   --card-text-muted: #475569;
   --card-blur: none;
+
+  /* Mobile Nav Background - Dark Mode */
+  --nav-bg-mobile: rgba(20, 30, 48, 0.95);
+  --nav-border-mobile: rgba(53, 87, 125, 0.2);
 }
 
 body {
@@ -110,6 +118,17 @@ body {
   background: transparent;
 }
 
+/* Mobile-specific navigation rules */
+@media (max-width: 1024px) {
+  .mobile-nav-container {
+    background: var(--nav-bg-mobile) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--nav-border-mobile);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+}
+
 .card-reversed, 
 [style*="--card-bg"] {
   background: var(--card-bg) !important;
@@ -122,10 +141,10 @@ body {
 
 .card-reversed:not(html.dark .card-reversed),
 [style*="--card-bg"]:not(html.dark [style*="--card-bg"]) {
-  background: rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.55) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
   color: var(--text) !important;
 }
 
@@ -136,10 +155,10 @@ body {
 
 html.dark .card-reversed,
 html.dark [style*="--card-bg"] {
-  background: linear-gradient(135deg, rgba(86, 225, 233, 0.08), rgba(187, 99, 255, 0.08)) !important;
+  background: linear-gradient(135deg, rgba(53, 87, 125, 0.12), rgba(20, 30, 48, 0.2)) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 240, 255, 0.3) !important;
+  border: 1px solid rgba(53, 87, 125, 0.25) !important;
   color: #f1f5f9 !important;
 }
 
@@ -150,13 +169,13 @@ html.dark [style*="--card-bg"] {
 
 html:not(.dark) .card-reversed:hover, 
 html:not(.dark) [style*="--card-bg"]:hover {
-  box-shadow: rgba(10, 35, 83, 0.15) 0px 20px 35px;
+  box-shadow: rgba(20, 30, 48, 0.08) 0px 20px 35px;
 }
 
 html.dark .card-reversed:hover, 
 html.dark [style*="--card-bg"]:hover {
-  box-shadow: rgba(0, 240, 255, 0.35) 0px 15px 35px, 
-              rgba(217, 70, 239, 0.25) 0px 5px 25px;
+  box-shadow: rgba(53, 87, 125, 0.3) 0px 15px 35px, 
+              rgba(20, 30, 48, 0.4) 0px 5px 25px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -187,7 +206,7 @@ h1 {
   line-height: 125%;
   letter-spacing: -1.2px;
   margin-bottom: 24px;
-  background: linear-gradient(135deg, var(--text-h) 30%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--text-h) 40%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
@@ -197,7 +216,7 @@ h1 {
 }
 
 html.dark h1 {
-  background: linear-gradient(135deg, #ffffff 15%, var(--accent) 60%, var(--accent-secondary) 100%);
+  background: linear-gradient(135deg, #ffffff 30%, var(--accent-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

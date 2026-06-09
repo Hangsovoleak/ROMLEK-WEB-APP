@@ -201,10 +201,8 @@ function Products() {
                   <h2 className="text-sm font-bold uppercase tracking-wider" style={{ color: 'var(--text-h)' }}>តម្រងស្វែងរក</h2>
                   <button 
                     onClick={() => setIsMobileFilterOpen(false)}
-                    className="h-8 w-8 rounded-full flex items-center justify-center font-bold text-base border-none cursor-pointer"
                     style={{ background: 'var(--code-bg)', color: 'var(--text)' }}
                   >
-                    ✕
                   </button>
                 </div>
                 <div className="space-y-4">

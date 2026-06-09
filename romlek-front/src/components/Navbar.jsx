@@ -38,22 +38,20 @@ function Navbar() {
         setSliderStyle((prev) => ({ ...prev, opacity: 0 }));
     };
 
-    // --- Dynamic Navigation Design Classes Matched to Your Specific Matrix ---
+    // --- Updated Navigation Design System Classes to support variable fallbacks ---
     const navContainerStyle = `
         w-full backdrop-blur-xl transition-all duration-300 border-b
-        bg-white/45 border-[var(--border)] shadow-[var(--shadow)]
-        dark:bg-[linear-gradient(135deg,rgba(86,225,233,0.04),rgba(187,99,255,0.04))]
+        bg-[var(--social-bg)] border-[var(--border)] shadow-[var(--shadow)]
     `;
 
     const menuPillStyle = `
         relative flex items-center gap-1 p-1.5 rounded-full border
-        bg-white/30 border-[var(--border)]
-        dark:bg-white/5 dark:border-white/10
+        bg-[var(--code-bg)] border-[var(--border)]
     `;
 
     return (
         <div className="w-full sticky top-0 z-50 px-0 sm:px-4 pt-0 sm:pt-2">
-            {/* Added a light wrapper constraint so the mobile menu can float as a pill */}
+            {/* Main Navbar Bar */}
             <nav className={`${navContainerStyle} sm:rounded-2xl`}>
                 <div className="w-full flex h-20 items-center justify-between px-6 lg:px-12">
                     
@@ -64,14 +62,14 @@ function Navbar() {
                         </Link>
                     </div>
 
-                    {/* Desktop Navigation Links with Glowing Auto-Sliding Hover */}
+                    {/* Desktop Navigation Links with Hover Slide */}
                     <div className="hidden md:flex md:items-center">
                         <ul className={menuPillStyle} onMouseLeave={handleMouseLeave}>
                             
                             <div 
                                 className="absolute top-1.5 bottom-1.5 rounded-full pointer-events-none transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] 
-                                bg-[var(--space-purple)] dark:bg-[var(--accent)] 
-                                shadow-[0_0_15px_rgba(91,88,235,0.4)] dark:shadow-[0_0_20px_rgba(0,240,255,0.6)]"
+                                bg-[var(--accent)] 
+                                shadow-[0_0_15px_rgba(53,87,125,0.4)] dark:shadow-[0_0_20px_rgba(53,87,125,0.6)]"
                                 style={{
                                     left: `${sliderStyle.left}px`,
                                     width: `${sliderStyle.width}px`,
@@ -91,7 +89,7 @@ function Navbar() {
                                         to={item.to} 
                                         className="block px-6 py-2 text-sm font-medium rounded-full text-center whitespace-nowrap transition-colors duration-200 
                                         text-[var(--text)] dark:text-slate-200 
-                                        hover:text-white dark:hover:text-[#051330]"
+                                        hover:text-white dark:hover:text-[#ffffff]"
                                     >
                                         {item.label}
                                     </Link>
@@ -103,34 +101,31 @@ function Navbar() {
                     {/* Right Action Items */}
                     <div className="hidden md:flex md:items-center md:gap-4 min-w-[140px] justify-end">
                         <div className="flex items-center gap-3">
-                            <button className="group flex h-10 w-10 items-center justify-center rounded-full text-white bg-[var(--space-dark)] dark:bg-[var(--accent)] dark:text-[#051330] shadow-[var(--shadow)] transition-all duration-300 hover:scale-105 active:scale-95">
+                            <button className="group flex h-10 w-10 items-center justify-center rounded-full text-white bg-[var(--text-h)] dark:bg-[var(--accent)] dark:text-white shadow-[var(--shadow)] transition-all duration-300 hover:scale-105 active:scale-95">
                                 <CircleUser className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
                             </button>
-                            <div className="p-1 rounded-full bg-white/30 dark:bg-white/5 border border-[var(--border)]">
+                            <div className="p-1 rounded-full bg-[var(--code-bg)] border border-[var(--border)]">
                                 <DarkMode />
                             </div>
                         </div>
                     </div>
 
-                    {/* Mobile Menu Button */}
+                    {/* Mobile Menu Button Trigger */}
                     <div className="flex md:hidden items-center gap-3">
                         <DarkMode />
                         <button
                             onClick={toggleMenu}
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border bg-white/40 dark:bg-white/5 border-[var(--border)] text-[var(--text)] dark:text-slate-200 shadow-sm backdrop-blur-md transition-all duration-300 active:scale-95"
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full border bg-[var(--code-bg)] border-[var(--border)] text-[var(--text)] dark:text-slate-200 shadow-sm backdrop-blur-md transition-all duration-300 active:scale-95"
                         >
-                            {isOpen ? <Menu className="h-5 w-5 animate-in fade-in zoom-in duration-200" /> : <Menu className="h-5 w-5 animate-in fade-in zoom-in duration-200" />}
+                            <Menu className="h-5 w-5 transition-transform duration-200" />
                         </button>
                     </div>
                 </div>
 
-                {/* --- TRANSFORMed MOBILE DROPDOWN CAPSULE --- */}
                 {isOpen && (
                     <div className="absolute top-[88px] left-4 right-4 md:hidden overflow-hidden rounded-2xl border backdrop-blur-2xl transition-all duration-300 shadow-[var(--shadow)] animate-in slide-in-from-top-4 duration-300 ease-out
-                        bg-[#5a58eba9] border-[var(--border)]
-                        dark:bg-[#5a58eba9] dark:border-white/10"
+                        bg-[var(--nav-bg-mobile)] border-[var(--nav-border-mobile)]"
                     >
-                        {/* Interactive Item Container */}
                         <div className="p-4 space-y-1">
                             {navItems.map((item) => (
                                 <Link 
@@ -139,8 +134,7 @@ function Navbar() {
                                     onClick={closeMenu} 
                                     className="block rounded-xl px-4 py-3.5 text-base font-medium transition-all duration-200 
                                         text-[var(--text)] dark:text-slate-200 
-                                        hover:bg-[var(--space-purple)]/15 dark:hover:bg-[var(--accent)]/10 
-                                        hover:text-[var(--space-purple)] dark:hover:text-[var(--accent)]
+                                        hover:bg-[var(--accent-bg)] hover:text-[var(--accent)]
                                         active:scale-[0.99]"
                                 >
                                     {item.label}
@@ -148,9 +142,11 @@ function Navbar() {
                             ))}
                         </div>
 
-                        {/* Action Drawer Area */}
-                        <div className="px-4 pb-4 pt-2 border-t border-[var(--border)] dark:border-white/5 bg-black/5 dark:bg-white/5">
-                            <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--space-dark)] text-white dark:bg-[var(--accent)] dark:text-[#051330] px-4 py-3.5 text-sm font-semibold shadow-md active:scale-[0.98] transition-all duration-150">
+                        <div className="px-4 pb-4 pt-3 border-t border-[var(--border)] bg-black/5 dark:bg-black/20">
+                            <button className="flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3.5 text-sm font-semibold shadow-md active:scale-[0.98] transition-all duration-150
+                                bg-[var(--space-dark)] text-white 
+                                dark:bg-[var(--accent)] dark:text-white"
+                            >
                                 <CircleUser className="h-5 w-5" />
                                 Profile
                             </button>
